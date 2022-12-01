@@ -1,0 +1,1 @@
+Building an API REST with Typescript. Implementing SOLID principles and clean architecture design. 

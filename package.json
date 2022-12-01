@@ -1,0 +1,33 @@
+{
+  "name": "api_rest_clean_architecture",
+  "version": "1.0.0",
+  "description": "Building an API REST with Typescript. Implementing SOLID principles and clean architecture design.",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "start": "node ./dist/index.js",
+    "build": "tsc",
+    "dev": "nodemon ./src/index.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/express": "^4.17.14",
+    "@types/helmet": "^4.0.0",
+    "@types/jest": "^29.2.3",
+    "@types/node": "^18.11.10",
+    "@types/supertest": "^2.0.12",
+    "jest": "^29.3.1",
+    "nodemon": "^2.0.20",
+    "supertest": "^6.3.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.3"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "helmet": "^6.0.1"
+  }
+}
