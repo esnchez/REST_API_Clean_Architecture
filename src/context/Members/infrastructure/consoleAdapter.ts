@@ -26,7 +26,7 @@ import { MemoryRepository } from "./MemoryRepository";
         emailNominated: "jon@gmail.es",
         description: "Jon is a great professional and leads a very successful BD team",
         communityScore : 6,
-        talentScore : 9,
+        talentScore : 7,
         acceptance: false
     })
 
