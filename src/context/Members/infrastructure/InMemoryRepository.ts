@@ -1,22 +1,20 @@
 import { MemberNomination } from "../domain/entities/MemberNomination";
 import { Member } from "../domain/entities/Member";
-import { MemberRepository } from "../domain/repositories/MemberRepository";
+import { MemberNominationRepository } from "../domain/repositories/MemberNominationRepository";
 
 
-export class InMemoryRepository implements MemberRepository {
+export class InMemoryRepository implements MemberNominationRepository {
 
     public members : Member[] = []
     public nominations : MemberNomination[] = []
 
     async save(memberNomination: MemberNomination): Promise<void> {
         this.nominations.push(memberNomination)
-        // throw new Error("Method not implemented.");
     }
     async getByEmailNominated(email: string): Promise<MemberNomination | null> {
         const nom = this.nominations.find(x => x.emailNominated == email)
         if (nom !== undefined ) return nom
         return null
-        // throw new Error("Method not implemented.");
     }
 
     async getMemberByEmail(email:string) : Promise<Member | null> {

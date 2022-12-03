@@ -1,14 +1,11 @@
 import { MemberNomination } from "../../domain/entities/MemberNomination";
-import { MemberRepository } from "../../domain/repositories/MemberRepository";
-import { ExistNominationService } from "../../domain/services/ExistNominationService";
-import { ValidMemberService } from "../../domain/services/ValidMemberService";
-import { AcceptanceNominationService } from "../../domain/services/AcceptanceNominationService";
+import { MemberNominationRepository } from "../../domain/repositories/MemberNominationRepository";
 
 export class GetAcceptedNomination {
 
-    private readonly memberRepository : MemberRepository
+    private readonly memberRepository : MemberNominationRepository
 
-    constructor(memberRepository : MemberRepository) {
+    constructor(memberRepository : MemberNominationRepository) {
         this.memberRepository = memberRepository
     }
 

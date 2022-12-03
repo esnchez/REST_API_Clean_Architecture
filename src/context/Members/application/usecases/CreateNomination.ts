@@ -1,18 +1,18 @@
 import { MemberNomination } from "../../domain/entities/MemberNomination";
-import { MemberRepository } from "../../domain/repositories/MemberRepository";
+import { MemberNominationRepository } from "../../domain/repositories/MemberNominationRepository";
 import { ExistNominationService } from "../../domain/services/ExistNominationService";
 import { ValidMemberService } from "../../domain/services/ValidMemberService";
 import { AcceptanceNominationService } from "../../domain/services/AcceptanceNominationService";
 
 export class CreateNomination {
 
-    private readonly memberRepository : MemberRepository
+    private readonly memberRepository : MemberNominationRepository
     private readonly existNominationService : ExistNominationService
     private readonly validMemberService : ValidMemberService
     private readonly acceptanceNominationService : AcceptanceNominationService
 
 
-    constructor(memberRepository : MemberRepository) {
+    constructor(memberRepository : MemberNominationRepository) {
         this.memberRepository = memberRepository
         this.existNominationService = new ExistNominationService(memberRepository)
         this.validMemberService = new ValidMemberService(memberRepository)

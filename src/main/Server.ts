@@ -1,5 +1,6 @@
 import express from "express"
 import helmet from "helmet"
+import { router } from "./routes"
 
 export class Server {
 
@@ -15,7 +16,7 @@ export class Server {
         this.app.use(helmet.noSniff());
         this.app.use(helmet.hidePoweredBy());
         this.app.use(helmet.frameguard({ action: 'deny' }));
-        // this.app.use(routes)
+        this.app.use(router)
     }
 
     async listen() : Promise<void> {

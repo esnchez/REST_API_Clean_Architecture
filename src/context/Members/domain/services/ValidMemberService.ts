@@ -1,10 +1,10 @@
-import { MemberRepository } from "../repositories/MemberRepository"
+import { MemberNominationRepository } from "../repositories/MemberNominationRepository"
 
 export class ValidMemberService {
 
-    private readonly memberRepository : MemberRepository
+    private readonly memberRepository : MemberNominationRepository
 
-    constructor(memberRepository : MemberRepository) {
+    constructor(memberRepository : MemberNominationRepository) {
         this.memberRepository = memberRepository
     }
 

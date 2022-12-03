@@ -3,7 +3,7 @@ import { Member } from "../entities/Member";
 // import { MemberEmail } from "../entities/MemberEmail";
 
 
-export interface MemberRepository {
+export interface MemberNominationRepository {
 
     save(memberNomination : MemberNomination) : Promise<void>
     // save(nomination : MemberNomination) : Promise<MemberNomination>
