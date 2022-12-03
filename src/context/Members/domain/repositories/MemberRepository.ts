@@ -12,4 +12,6 @@ export interface MemberRepository {
     getByEmailNominated(email : string) : Promise<MemberNomination | null>
 
     getMemberByEmail(email : string) : Promise<Member | null>
+
+    getAcceptedNomination() : Promise<MemberNomination[]>
 }

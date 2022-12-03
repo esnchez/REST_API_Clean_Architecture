@@ -4,7 +4,7 @@ import { ExistNominationService } from "../../domain/services/ExistNominationSer
 import { ValidMemberService } from "../../domain/services/ValidMemberService";
 import { AcceptanceNominationService } from "../../domain/services/AcceptanceNominationService";
 
-export class createNomination {
+export class CreateNomination {
 
     private readonly memberRepository : MemberRepository
     private readonly existNominationService : ExistNominationService

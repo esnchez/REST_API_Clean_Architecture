@@ -1,5 +1,7 @@
-import { createNomination } from "../application/usecases/createNomination";
+import { CreateNomination } from "../application/usecases/createNomination";
+import { GetAcceptedNomination } from "../application/usecases/getAcceptedNomination";
 import { Member } from "../domain/entities/Member";
+import { Score } from "../domain/entities/Score";
 import { MemoryRepository } from "./MemoryRepository";
 
 (async () => {
@@ -19,17 +21,41 @@ import { MemoryRepository } from "./MemoryRepository";
     console.log("members: ",inMemoryNomRepo.members)
 
     
-    const createNominationUseCase = new createNomination(inMemoryNomRepo)
+    const createNominationUseCase = new CreateNomination(inMemoryNomRepo)
     await createNominationUseCase.run({
         id:1,
         emailReferring:"jane_smith@nova.com",
         emailNominated: "jon@gmail.es",
         description: "Jon is a great professional and leads a very successful BD team",
-        communityScore : 6,
-        talentScore : 7,
+        communityScore : new Score(6),
+        talentScore : new Score(9),
         acceptance: false
     })
 
-    console.log(inMemoryNomRepo.nominations)
+    await createNominationUseCase.run({
+        id:1,
+        emailReferring:"jane_smith@nova.com",
+        emailNominated: "victor@gmail.es",
+        description: "Victor is a great professional and leads a very successful BD team",
+        communityScore : new Score(6),
+        talentScore : new Score(4),
+        acceptance: false
+    })
+
+    await createNominationUseCase.run({
+        id:1,
+        emailReferring:"jane_smith@nova.com",
+        emailNominated: "hector@gmail.es",
+        description: "Hector is a great professional and leads a very successful BD team",
+        communityScore : new Score(6),
+        talentScore : new Score(4),
+        acceptance: false
+    })
+
+    const getAcceptedNominationUseCase = new GetAcceptedNomination(inMemoryNomRepo)
+    const acceptedNoms =  await getAcceptedNominationUseCase.run()
+    console.log("All nominations stored: ", inMemoryNomRepo.nominations)
+    console.log("All accepted nominations", acceptedNoms)
+
 
 })()

@@ -11,7 +11,7 @@ export class AcceptanceNominationService {
 
     async run( memberNomination : MemberNomination) : Promise<MemberNomination>{
 
-        if (memberNomination.talentScore > 8 ) {
+        if (memberNomination.talentScore.points > 8 ) {
             memberNomination.acceptance = true
         }
         return memberNomination

@@ -25,4 +25,8 @@ export class MemoryRepository implements MemberRepository {
         return null
     }
 
+    async getAcceptedNomination(): Promise<MemberNomination[]> {
+        return this.nominations.filter(x => x.acceptance == true)
+    }
+
 }
