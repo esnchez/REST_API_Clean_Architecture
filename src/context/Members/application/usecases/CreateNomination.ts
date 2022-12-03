@@ -11,11 +11,12 @@ export class CreateNomination {
     private readonly validMemberService : ValidMemberService
     private readonly acceptanceNominationService : AcceptanceNominationService
 
+
     constructor(memberRepository : MemberRepository) {
         this.memberRepository = memberRepository
         this.existNominationService = new ExistNominationService(memberRepository)
         this.validMemberService = new ValidMemberService(memberRepository)
-        this.acceptanceNominationService = new AcceptanceNominationService(memberRepository)
+        this.acceptanceNominationService = new AcceptanceNominationService()
     }
 
     //evaluate uuids and destructuring
@@ -29,9 +30,9 @@ export class CreateNomination {
         const isNomSaved : boolean = await this.existNominationService.run(nomination.emailNominated)
         if (isNomSaved) throw new Error("Nomination already stored")
 
-        //Acceptance is handled depending on talent score
+        //Acceptance/email is handled depending on talent score
         const nomRefined : MemberNomination = await this.acceptanceNominationService.run(nomination)
-
+ 
         await this.memberRepository.save(nomRefined)
     }
 }

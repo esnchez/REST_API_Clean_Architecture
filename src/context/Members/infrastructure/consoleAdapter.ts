@@ -2,11 +2,11 @@ import { CreateNomination } from "../application/usecases/CreateNomination";
 import { GetAcceptedNomination } from "../application/usecases/GetAcceptedNomination";
 import { Member } from "../domain/entities/Member";
 import { Score } from "../domain/entities/Score";
-import { MemoryRepository } from "./MemoryRepository";
+import { InMemoryRepository } from "./InMemoryRepository";
 
 (async () => {
 
-    const inMemoryNomRepo = new MemoryRepository()
+    const inMemoryNomRepo = new InMemoryRepository()
     console.log(inMemoryNomRepo.nominations)
     console.log(inMemoryNomRepo.members)
 

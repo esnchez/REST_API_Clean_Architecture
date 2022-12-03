@@ -3,7 +3,7 @@ import { Member } from "../domain/entities/Member";
 import { MemberRepository } from "../domain/repositories/MemberRepository";
 
 
-export class MemoryRepository implements MemberRepository {
+export class InMemoryRepository implements MemberRepository {
 
     public members : Member[] = []
     public nominations : MemberNomination[] = []
