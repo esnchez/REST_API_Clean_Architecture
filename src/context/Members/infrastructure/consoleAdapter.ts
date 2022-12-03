@@ -1,5 +1,5 @@
-import { CreateNomination } from "../application/usecases/createNomination";
-import { GetAcceptedNomination } from "../application/usecases/getAcceptedNomination";
+import { CreateNomination } from "../application/usecases/CreateNomination";
+import { GetAcceptedNomination } from "../application/usecases/GetAcceptedNomination";
 import { Member } from "../domain/entities/Member";
 import { Score } from "../domain/entities/Score";
 import { MemoryRepository } from "./MemoryRepository";
