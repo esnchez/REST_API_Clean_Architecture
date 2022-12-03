@@ -1,4 +1,5 @@
 import { MemberNomination } from "../entities/MemberNomination";
+import { Member } from "../entities/Member";
 // import { MemberEmail } from "../entities/MemberEmail";
 
 
@@ -10,4 +11,5 @@ export interface MemberRepository {
 
     getByEmailNominated(email : string) : Promise<MemberNomination | null>
 
+    getMemberByEmail(email : string) : Promise<Member | null>
 }

@@ -2,14 +2,14 @@
 
 
 export type MemberProps = {
-    id: string,
+    id: number,
     name: string,
     email: string,
 }
 
 
 export class Member {
-    public id: string;
+    public id: number;
     public name: string;
     public email: string;
 
