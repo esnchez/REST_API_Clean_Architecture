@@ -20,6 +20,10 @@ export class createNomination {
         const isSaved : boolean = await this.existNominationService.run(nomination.emailNominated)
         if (isSaved) throw new Error("Nomination already stored")
 
+        // if (nomination.talentScore.points > 8) {
+        //     nomination.acceptance = true
+                
+        // }
 
         await this.memberRepository.save(nomination)
     }

@@ -1,25 +1,25 @@
 // import { MemberEmail } from "./MemberEmail";
-import { Score } from "./Score";
+// import { Score } from "./Score";
 
 
 export type MemberNominationProps = {
-    id: string,
+    id: number,
     emailReferring: string,
     emailNominated: string,
     description: string,
-    communityScore : Score
-    talentScore : Score
+    communityScore : number
+    talentScore : number
     acceptance: boolean
 }
 
 
 export class MemberNomination {
-    public id: string;
+    public id: number;
     public emailReferring: string;
     public emailNominated: string;
     public description: string;
-    public communityScore: Score;
-    public talentScore: Score;
+    public communityScore: number;
+    public talentScore: number;
     public acceptance: boolean
 
     constructor( memberNominationProps : MemberNominationProps) {
@@ -31,9 +31,5 @@ export class MemberNomination {
         this.talentScore = memberNominationProps.talentScore;
         this.acceptance = memberNominationProps.acceptance
     }
-
-        
-        
-
 
 } 

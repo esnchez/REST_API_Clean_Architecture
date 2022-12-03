@@ -8,6 +8,8 @@
   },
   "scripts": {
     "start": "node ./dist/index.js",
+    "start-console-app": "nodemon ./src/context/Members/infrastructure/consoleAdapter.ts",
+
     "build": "tsc",
     "dev": "nodemon ./src/index.ts"
   },

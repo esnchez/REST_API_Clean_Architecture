@@ -3,10 +3,11 @@ import { MemberNomination } from "../entities/MemberNomination";
 
 
 export interface MemberRepository {
+
     save(memberNomination : MemberNomination) : Promise<void>
     // save(nomination : MemberNomination) : Promise<MemberNomination>
     // save : (nomination : MemberNomination) =>  Promise<void>
 
-    getByEmailNominated(emailNominated : string) : Promise<MemberNomination>
+    getByEmailNominated(email : string) : Promise<MemberNomination | null>
 
 }
