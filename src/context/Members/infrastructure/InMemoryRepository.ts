@@ -11,8 +11,8 @@ export class InMemoryRepository implements MemberNominationRepository {
     async save(memberNomination: MemberNomination): Promise<void> {
         this.nominations.push(memberNomination)
     }
-    async getByEmailNominated(email: string): Promise<MemberNomination | null> {
-        const nom = this.nominations.find(x => x.emailNominated == email)
+    async getByemailNom(email: string): Promise<MemberNomination | null> {
+        const nom = this.nominations.find(x => x.emailNom == email)
         if (nom !== undefined ) return nom
         return null
     }

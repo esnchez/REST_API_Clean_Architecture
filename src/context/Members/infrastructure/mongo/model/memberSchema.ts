@@ -24,4 +24,4 @@ const MemberSchema = new Schema<Member>(
 )
 
 //document/table name & the structure in the db  
-export const MemberModel = model('member', MemberSchema)
+export const MemberModel = model('members', MemberSchema)

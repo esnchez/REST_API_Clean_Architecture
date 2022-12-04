@@ -5,7 +5,7 @@ export interface MemberNominationRepository {
 
     save(memberNomination : MemberNomination) : Promise<void>
 
-    getByEmailNominated(email : string) : Promise<MemberNomination | null>
+    getByemailNom(email : string) : Promise<MemberNomination | null>
 
     getMemberByEmail(email : string) : Promise<Member | null>
 

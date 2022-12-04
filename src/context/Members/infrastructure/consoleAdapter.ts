@@ -10,43 +10,41 @@ import { InMemoryRepository } from "./InMemoryRepository";
     console.log(inMemoryNomRepo.members)
 
 
-    const mem1 : Member = {
-        id: "3",
-        name: "Jane",
-        email: "jane_smith@nova.com",
-    }
+    const mem1 : Member = new Member("Jane", "jane_smith@nova.com")
     inMemoryNomRepo.members.push(mem1)
 
     console.log("members: ",inMemoryNomRepo.members)
 
     
     const createNominationUseCase = new CreateNomination(inMemoryNomRepo)
-    await createNominationUseCase.run(
-        "jane_smith@nova.com",
-        "jon@gmail.es",
-        "Jon is a great professional and leads a very successful BD team",
-        6,
-        9
-    )
+    await createNominationUseCase.run({
+        emailRef:"jane_smith@nova.com",
+        emailNom: "hector@gmail.es",
+        description: "Hector is a great professional and leads a very successful BD team",
+        communityScore : 6,
+        talentScore : 4,
+    })
 
-    await createNominationUseCase.run(
-        "jane_smith@nova.com",
-        "jon@gmail.es",
-        "Jon is a great professional and leads a very successful BD team",
-        6,
-        9
-    )
+    await createNominationUseCase.run({
+        emailRef:"jane_smith@nova.com",
+        emailNom: "hector@gmail.es",
+        description: "Hector is a great professional and leads a very successful BD team",
+        communityScore : 6,
+        talentScore : 4,
+    })
 
-    await createNominationUseCase.run(
-        "jane_smith@nova.com",
-        "jon@gmail.es",
-        "Jon is a great professional and leads a very successful BD team",
-        6,
-        9
-    )
+    await createNominationUseCase.run({
+        emailRef:"jane_smith@nova.com",
+        emailNom: "hector@gmail.es",
+        description: "Hector is a great professional and leads a very successful BD team",
+        communityScore : 6,
+        talentScore : 4,
+    })
 
     const getAcceptedNominationUseCase = new GetAcceptedNomination(inMemoryNomRepo)
     const acceptedNoms =  await getAcceptedNominationUseCase.run()
     console.log("All nominations stored: ", inMemoryNomRepo.nominations)
     console.log("All accepted nominations", acceptedNoms)
+
+
 })()

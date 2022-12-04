@@ -19,7 +19,8 @@ export class CreateNomination {
         this.acceptanceNominationService = new AcceptanceNominationService()
     }
 
-    async run(emailRef : string, emailNom:string, description: string, communityScore: number, talentScore: number): Promise<void> {
+    async run({emailRef, emailNom, description, communityScore, talentScore} 
+        : {emailRef : string, emailNom:string, description: string, communityScore: number, talentScore: number}): Promise<void> {
                     
         //Nomination is submitted by a valid/stored member? TODO:manage error
         const isMemValid : boolean = await this.validMemberService.run(emailRef)

@@ -1,8 +1,7 @@
-import { getAcceptedNominationController } from "./nomination/GetAcceptedNominationController";
-import { createNominationController } from "./nomination/CreateNominationController";
+import { GetAcceptedNominationController } from "./nomination/GetAcceptedNominationController";
+import { CreateNominationController } from "./nomination/CreateNominationController";
 
 export {
-    getAcceptedNominationController as getAcceptedNominationController,
-    createNominationController as createNominationController
-
+    GetAcceptedNominationController as GetAcceptedNominationController,
+    CreateNominationController as CreateNominationController
 }

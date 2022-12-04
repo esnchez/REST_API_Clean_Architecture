@@ -8,11 +8,11 @@ const NominationSchema = new Schema<MemberNomination>(
             type: String,
             required: true
         },
-        emailReferring: {
+        emailRef: {
             type: String,
             required: true
         },
-        emailNominated: {
+        emailNom: {
             type: String,
             required: true,
             unique: true
@@ -22,11 +22,11 @@ const NominationSchema = new Schema<MemberNomination>(
             required: true
         },
         communityScore: {
-            type: Score,
+            type: Number,
             required: true
         },
         talentScore: {
-            type: Score,
+            type: Number,
             required: true
         },
         acceptance: {
@@ -41,4 +41,4 @@ const NominationSchema = new Schema<MemberNomination>(
 )
 
 //document/table name & the structure in the db  
-export const NominationModel = model('nomination', NominationSchema)
+export const NominationModel = model('nominations', NominationSchema)

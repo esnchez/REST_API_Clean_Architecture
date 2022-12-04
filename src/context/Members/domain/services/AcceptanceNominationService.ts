@@ -15,7 +15,7 @@ export class AcceptanceNominationService {
             memberNomination.acceptance = true
         } else {
             //send email
-            //this.emailService.sendEmail(memberNomination.emailReferring, memberNomination.emailNominated)
+            //this.emailService.sendEmail(memberNomination.emailRef, memberNomination.emailNom)
         }
         return memberNomination
     }

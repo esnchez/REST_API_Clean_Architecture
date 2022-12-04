@@ -1,7 +1,7 @@
 import { Server } from "./Server";
 import { dbConnect } from "../context/Members/infrastructure/mongo/db/mongo";
 
-export class BackendApp {
+export class App {
     server?: Server
 
     async start() {

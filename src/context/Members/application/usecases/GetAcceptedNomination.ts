@@ -10,8 +10,8 @@ export class GetAcceptedNomination {
     }
 
     //evaluate uuids and destructuring
-    async run(): Promise<MemberNomination[]> {
+    async run(): Promise<MemberNomination[] | null> {
 
-        return await this.memberRepository.getAcceptedNomination()
+        return await this.memberRepository.getAcceptedNomination() 
     }
 }

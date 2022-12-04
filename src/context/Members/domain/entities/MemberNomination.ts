@@ -4,8 +4,8 @@ import { Score } from "./Score";
 
 interface MemberNominationProps {
     id: string,
-    emailReferring: string,
-    emailNominated: string,
+    emailRef: string,
+    emailNom: string,
     description: string,
     communityScore : Score
     talentScore : Score
@@ -15,18 +15,18 @@ interface MemberNominationProps {
 
 export class MemberNomination implements MemberNominationProps{
     public id: string;
-    public emailReferring: string;
-    public emailNominated: string;
+    public emailRef: string;
+    public emailNom: string;
     public description: string;
     public communityScore: Score;
     public talentScore: Score;
     public acceptance: boolean
 
-    constructor(emailReferring : string, emailNominated:string, description: string, 
+    constructor(emailRef : string, emailNom:string, description: string, 
         communityScore: number, talentScore: number) {
         this.id = uuid();
-        this.emailReferring = emailReferring;
-        this.emailNominated = emailNominated;
+        this.emailRef = emailRef;
+        this.emailNom = emailNom;
         this.description = description;
         this.communityScore = new Score(communityScore);
         this.talentScore = new Score(talentScore);

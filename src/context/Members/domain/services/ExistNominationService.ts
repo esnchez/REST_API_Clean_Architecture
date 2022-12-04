@@ -11,7 +11,7 @@ export class ExistNominationService {
 
     async run(email: string) : Promise<boolean> {
 
-        const nomination = await this.memberRepository.getByEmailNominated(email)
+        const nomination = await this.memberRepository.getByemailNom(email)
         if(nomination !== null) {
            return true 
         }

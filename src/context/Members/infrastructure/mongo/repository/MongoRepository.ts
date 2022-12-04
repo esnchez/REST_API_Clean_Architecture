@@ -5,10 +5,12 @@ import { NominationModel } from "../model/nominationSchema";
 import { MemberModel } from "../model/memberSchema";
 
 export class MongoRepository implements MemberNominationRepository {
+
     async save(memberNomination: MemberNomination): Promise<void> {
         await NominationModel.create(memberNomination)
     }
-    async getByEmailNominated(email: string): Promise<MemberNomination | null> {
+
+    async getByemailNom(email: string): Promise<MemberNomination | null> {
         const nomination = await NominationModel.findOne({email})
         return nomination
     }
@@ -18,10 +20,7 @@ export class MongoRepository implements MemberNominationRepository {
         return member
     }
     async getAcceptedNomination(): Promise<MemberNomination[] | null> {
-        const acceptedNoms = await NominationModel.find()
-        return acceptedNoms
+        const acceptedNoms = await NominationModel.find({"nominations.acceptance": true})
+        return acceptedNoms ?? "undefined"
     }
-
-
-    
 }
