@@ -1,22 +1,19 @@
-// import { MemberEmail } from "./MemberEmail";
+import { v4 as uuid } from "uuid";
 
-
-export type MemberProps = {
-    id: number,
+interface MemberProps {
+    id: string,
     name: string,
     email: string,
 }
 
-
-export class Member {
-    public id: number;
+export class Member implements MemberProps {
+    public id: string;
     public name: string;
     public email: string;
 
-    constructor( memberProps : MemberProps) {
-        this.id = memberProps.id;
-        this.name = memberProps.name;
-        this.email = memberProps.email;
+    constructor( name : string, email:string,) {
+        this.id = uuid();
+        this.name = name;
+        this.email = email;
     }
-
 } 

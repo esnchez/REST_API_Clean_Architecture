@@ -10,7 +10,7 @@ export class Emailer {
             port: 465,
             secure: true,
             auth:{
-                user:"",
+                user: "",
                 pass: ""
             }
             }

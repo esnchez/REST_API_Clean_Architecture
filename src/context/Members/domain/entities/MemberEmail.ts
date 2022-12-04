@@ -1,6 +1,4 @@
 
-//value object impl
-
 // export class MemberEmail {
 //     public email: string;
 

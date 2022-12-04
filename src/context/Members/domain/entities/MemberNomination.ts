@@ -1,9 +1,9 @@
-// import { MemberEmail } from "./MemberEmail";
+import { v4 as uuid } from "uuid";
 import { Score } from "./Score";
 
 
-export type MemberNominationProps = {
-    id: number,
+interface MemberNominationProps {
+    id: string,
     emailReferring: string,
     emailNominated: string,
     description: string,
@@ -13,8 +13,8 @@ export type MemberNominationProps = {
 }
 
 
-export class MemberNomination {
-    public id: number;
+export class MemberNomination implements MemberNominationProps{
+    public id: string;
     public emailReferring: string;
     public emailNominated: string;
     public description: string;
@@ -22,14 +22,15 @@ export class MemberNomination {
     public talentScore: Score;
     public acceptance: boolean
 
-    constructor( memberNominationProps : MemberNominationProps) {
-        this.id = memberNominationProps.id;
-        this.emailReferring = memberNominationProps.emailReferring;
-        this.emailNominated = memberNominationProps.emailNominated;
-        this.description = memberNominationProps.description;
-        this.communityScore = memberNominationProps.communityScore;
-        this.talentScore = memberNominationProps.talentScore;
-        this.acceptance = memberNominationProps.acceptance
+    constructor(emailReferring : string, emailNominated:string, description: string, 
+        communityScore: number, talentScore: number) {
+        this.id = uuid();
+        this.emailReferring = emailReferring;
+        this.emailNominated = emailNominated;
+        this.description = description;
+        this.communityScore = new Score(communityScore);
+        this.talentScore = new Score(talentScore);
+        this.acceptance = false
     }
 
 } 
