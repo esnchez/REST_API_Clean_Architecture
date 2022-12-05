@@ -1,11 +1,14 @@
 import express from "express"
 import helmet from "helmet"
+import * as http from 'http';
 import { router } from "./routes"
 
 export class Server {
 
     private readonly port: string
     private readonly app: express.Express
+    private httpServer?: http.Server;
+
 
     constructor(port : string) {
         this.port = port
@@ -21,7 +24,7 @@ export class Server {
 
     async listen() : Promise<void> {
         return new Promise(resolve => {
-            this.app.listen(this.port, () => {
+            this.httpServer = this.app.listen(this.port, () => {
               console.log(
                 ` Backend App is running at http://localhost:${this.port} in ${this.app.get('env')} mode`
               );
@@ -30,6 +33,8 @@ export class Server {
           });
     }
 
-
-
+    getHTTPServer() {
+      return this.httpServer;
+    }
+  
 }

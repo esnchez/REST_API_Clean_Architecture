@@ -1,31 +1,46 @@
 import request from "supertest"; 
 import {App} from "../src/main/App";
 
-let server : App
+let app : App
 
-describe('Testing on API REST', () => {
+describe('Testing API REST', () => {
 
     beforeAll(async () => {
-        const server = new App()
-        await server.start()
+        app = new App()
+        await app.start()
 
     })
+
     afterAll(async () => {
     });
 
     describe('GET /nomination', () => {
 
-        it('Route call is working and returns 200 status code', async () => {
-            const response = await request(server).get('/nomination');
-            expect(response.statusCode).toBe(200);
-            expect(response.headers['content-type']).toContain('json');
+        it('Controller call returns 401 status code due to middleware', async () => {
+            const response = await request(app.httpServer).get('/nomination');
+            expect(response.statusCode).toBe(401);
         });
 
-        it('Request returns an array, with no nominations', async () => {
-            const response = await request(server).get('/nomination');
-            expect(response.body).toBeInstanceOf(Array);
-            expect(response.body).toEqual(Array);
+        it('Controller returns 200 status code when submitting adequate request', async () => {
+            const response = await request(app.httpServer).get('/nomination').send({ 
+                role: "ADMIN", 
+              });
+            expect(response.statusCode).toBe(200);
+        });
 
+        it('Controller returns JSON headers when request succeeds', async () => {
+            const response = await request(app.httpServer).get('/nomination').send({ 
+                role: "ADMIN", 
+              });
+            expect(response.headers['content-type']).toEqual(expect.stringContaining('json'));
+        });
+
+        it('Controller returns object with nominations field', async () => {
+            const response = await request(app.httpServer).get('/nomination').send({ 
+                role: "ADMIN", 
+              });;
+            
+            expect(response.body).toEqual(expect.objectContaining({ nominations : expect.any(Array)}));
         });
 
     });

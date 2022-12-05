@@ -11,4 +11,8 @@ export class App {
         return this.server.listen()
     }
 
+    get httpServer() {
+        return this.server?.getHTTPServer();
+    }
+
 }
