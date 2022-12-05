@@ -1,4 +1,6 @@
-Building an API REST with Typescript. Implementing SOLID principles and clean architecture. 
+## Node.js REST API in Typescript 
+
+Implementing SOLID principles, domain-driven design and clean architecture. 
 
 ### Build up MongoDB container
 docker run --name mongodb -d -p 27017:27017 mongo:latest
