@@ -14,7 +14,7 @@ export class AcceptanceNominationService {
         if (memberNomination.talentScore > 8 ) {
             memberNomination.acceptance = true
         } else {
-            //Send email to both referring and nominated members
+            //Send email to both referring and nominated member emails
             this.emailService.sendEmail(memberNomination.emailRef, memberNomination.emailNom)
         }
         return memberNomination

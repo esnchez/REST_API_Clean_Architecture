@@ -30,7 +30,8 @@ export class CreateNominationUseCase implements UseCase<CreateNominationUseCaseR
 
     async run(request : CreateNominationUseCaseRequestDTO): Promise<void> {
                     
-        //Nomination is submitted by a valid/stored member? 
+        //**Nomination is submitted by a valid/stored member email? 
+
         // const isMemValid : boolean = await this.validMemberService.run(request.emailRef)
         // if (!isMemValid) throw new Error("Member is not valid")
 
