@@ -35,7 +35,7 @@ describe('Testing API REST', () => {
             expect(response.headers['content-type']).toEqual(expect.stringContaining('json'));
         });
 
-        it('Controller returns object with nominations field', async () => {
+        it('Controller returns response body object with nominations field and array of results', async () => {
             const response = await request(app.httpServer).get('/nomination').send({ 
                 role: "ADMIN", 
               });;
