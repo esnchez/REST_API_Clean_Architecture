@@ -11,16 +11,16 @@ export class MongoRepository implements MemberNominationRepository {
     }
 
     async getByemailNom(email: string): Promise<MemberNomination | null> {
-        const nomination = await NominationModel.findOne({email})
+        const nomination = await NominationModel.findOne({emailNom: email})
         return nomination
     }
 
     async getMemberByEmail(email: string): Promise<Member | null> {
-        const member = await MemberModel.findOne({email})
+        const member = await MemberModel.findOne({email: email})
         return member
     }
     async getAcceptedNomination(): Promise<MemberNomination[] | null> {
-        const acceptedNoms = await NominationModel.find({"nominations.acceptance": true})
+        const acceptedNoms = await NominationModel.find({ acceptance : true})
         return acceptedNoms ?? "undefined"
     }
 }

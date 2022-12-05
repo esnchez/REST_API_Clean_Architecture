@@ -1,22 +1,21 @@
 import { Request, Response } from "express";
-import { GetAcceptedNomination } from "../../../context/Members/application/usecases/GetAcceptedNomination";
+import { GetAcceptedNominationUseCase } from "../../../context/Members/application/usecases/GetAcceptedNominationUseCase";
+import httpStatus from "http-status";
 
 export class GetAcceptedNominationController {
 
-    private readonly getAcceptedNominationUseCase : GetAcceptedNomination
+    private readonly getAcceptedNominationUseCase : GetAcceptedNominationUseCase
     
-    constructor(getAcceptedNominationUseCase : GetAcceptedNomination) {
+    constructor(getAcceptedNominationUseCase : GetAcceptedNominationUseCase) {
         this.getAcceptedNominationUseCase = getAcceptedNominationUseCase
     }
 
     getAcceptedNom = async (req : Request, res : Response) => {
         try {
             const nomData = await this.getAcceptedNominationUseCase.run()
-            console.log("hey", nomData)
-            res.json({nominations: nomData})
+            res.status(httpStatus.OK).json({nominations: nomData})
         } catch (error) {
-            //TODO: manage error
-            console.log(error)            
+            res.status(httpStatus.INTERNAL_SERVER_ERROR).send()  
         }
     }
 }

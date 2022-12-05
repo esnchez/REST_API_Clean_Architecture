@@ -1,14 +1,14 @@
 import { CreateNominationController, GetAcceptedNominationController } from '../controllers';
 import { Router} from 'express';
-import { CreateNomination } from '../../context/Members/application/usecases/CreateNomination';
-import { GetAcceptedNomination } from '../../context/Members/application/usecases/GetAcceptedNomination';
+import { CreateNominationUseCase } from '../../context/Members/application/usecases/CreateNominationUseCase';
+import { GetAcceptedNominationUseCase } from '../../context/Members/application/usecases/GetAcceptedNominationUseCase';
 
 import { MongoRepository } from '../../context/Members/infrastructure/mongo/repository/MongoRepository';
 
 const mongoRepository = new MongoRepository()
 
-const createNominationUseCase = new CreateNomination(mongoRepository)
-const getAcceptedNominationUseCase = new GetAcceptedNomination(mongoRepository)
+const createNominationUseCase = new CreateNominationUseCase(mongoRepository)
+const getAcceptedNominationUseCase = new GetAcceptedNominationUseCase(mongoRepository)
 
 const createNominationController = new CreateNominationController(createNominationUseCase)
 const getAcceptedNominationController = new GetAcceptedNominationController(getAcceptedNominationUseCase)

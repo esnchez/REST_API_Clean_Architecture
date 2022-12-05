@@ -1,4 +1,4 @@
-import { Emailer } from "../../infrastructure/utils/emailer";
+import { Emailer } from "../../infrastructure/utils/Emailer";
 import { MemberNomination } from "../entities/MemberNomination";
 
 export class AcceptanceNominationService {
@@ -11,7 +11,7 @@ export class AcceptanceNominationService {
 
     async run( memberNomination : MemberNomination) : Promise<MemberNomination>{
 
-        if (memberNomination.talentScore.points > 8 ) {
+        if (memberNomination.talentScore > 8 ) {
             memberNomination.acceptance = true
         } else {
             //send email

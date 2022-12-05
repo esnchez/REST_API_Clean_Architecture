@@ -1,7 +1,7 @@
 import { MemberNomination } from "../../domain/entities/MemberNomination";
 import { MemberNominationRepository } from "../../domain/repositories/MemberNominationRepository";
 
-export class GetAcceptedNomination {
+export class GetAcceptedNominationUseCase {
 
     private readonly memberRepository : MemberNominationRepository
 

@@ -1,4 +1,4 @@
-import {Schema, model} from "mongoose"
+import {Schema, model, Types } from "mongoose"
 import { MemberNomination } from "../../../domain/entities/MemberNomination"
 import { Score } from "../../../domain/entities/Score"
 

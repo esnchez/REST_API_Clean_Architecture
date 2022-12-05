@@ -1,21 +1,22 @@
 import { Request, Response } from "express";
-import { CreateNomination } from "../../../context/Members/application/usecases/CreateNomination";
+import { CreateNominationUseCase } from "../../../context/Members/application/usecases/CreateNominationUseCase";
+import httpStatus from "http-status";
+
 
 export class CreateNominationController {
 
-    private readonly createNominationUseCase : CreateNomination
+    private readonly createNominationUseCase : CreateNominationUseCase
     
-    constructor(createNominationUseCase : CreateNomination) {
+    constructor(createNominationUseCase : CreateNominationUseCase) {
         this.createNominationUseCase = createNominationUseCase
     }
 
     createNom = async (req : Request, res : Response) => {
         try {
             await this.createNominationUseCase.run(req.body)
-            res.json("Created successfully")
+            res.status(httpStatus.CREATED).json("Created successfully")
         } catch (error) {
-            //TODO: manage error
-            console.log(error)
+            res.status(httpStatus.INTERNAL_SERVER_ERROR).send("error")
         }
     }
 }

@@ -1,5 +1,5 @@
-import { CreateNomination } from "../application/usecases/CreateNomination";
-import { GetAcceptedNomination } from "../application/usecases/GetAcceptedNomination";
+import { CreateNominationUseCase } from "../application/usecases/CreateNominationUseCase";
+import { GetAcceptedNominationUseCase } from "../application/usecases/GetAcceptedNominationUseCase";
 import { Member } from "../domain/entities/Member";
 import { InMemoryRepository } from "./InMemoryRepository";
 
@@ -16,7 +16,7 @@ import { InMemoryRepository } from "./InMemoryRepository";
     console.log("members: ",inMemoryNomRepo.members)
 
     
-    const createNominationUseCase = new CreateNomination(inMemoryNomRepo)
+    const createNominationUseCase = new CreateNominationUseCase(inMemoryNomRepo)
     await createNominationUseCase.run({
         emailRef:"jane_smith@nova.com",
         emailNom: "hector@gmail.es",
@@ -41,7 +41,7 @@ import { InMemoryRepository } from "./InMemoryRepository";
         talentScore : 4,
     })
 
-    const getAcceptedNominationUseCase = new GetAcceptedNomination(inMemoryNomRepo)
+    const getAcceptedNominationUseCase = new GetAcceptedNominationUseCase(inMemoryNomRepo)
     const acceptedNoms =  await getAcceptedNominationUseCase.run()
     console.log("All nominations stored: ", inMemoryNomRepo.nominations)
     console.log("All accepted nominations", acceptedNoms)
