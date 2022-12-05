@@ -30,17 +30,17 @@ export class CreateNominationUseCase implements UseCase<CreateNominationUseCaseR
 
     async run(request : CreateNominationUseCaseRequestDTO): Promise<void> {
                     
-        //Nomination is submitted by a valid/stored member? TODO:manage error
+        //Nomination is submitted by a valid/stored member? 
         // const isMemValid : boolean = await this.validMemberService.run(request.emailRef)
         // if (!isMemValid) throw new Error("Member is not valid")
 
-        //Nomination submitted is already stored? TODO:manage error
+        //Nomination submitted is already stored.
         const isNomSaved : boolean = await this.existNominationService.run(request.emailNom)
         if (isNomSaved) throw new Error("Nomination already stored")
 
         const nomination = new MemberNomination(request)
 
-        //Acceptance/email is handled depending on talent score
+        //Acceptance/email is handled depending on talent score.
         const nomRefined : MemberNomination = await this.acceptanceNominationService.run(nomination)
  
         await this.memberRepository.save(nomRefined)

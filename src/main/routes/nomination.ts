@@ -2,8 +2,8 @@ import { CreateNominationController, GetAcceptedNominationController } from '../
 import { Router} from 'express';
 import { CreateNominationUseCase } from '../../context/Members/application/usecases/CreateNominationUseCase';
 import { GetAcceptedNominationUseCase } from '../../context/Members/application/usecases/GetAcceptedNominationUseCase';
-
 import { MongoRepository } from '../../context/Members/infrastructure/mongo/repository/MongoRepository';
+import { isAdmin } from '../middleware/auth';
 
 const mongoRepository = new MongoRepository()
 
@@ -14,5 +14,5 @@ const createNominationController = new CreateNominationController(createNominati
 const getAcceptedNominationController = new GetAcceptedNominationController(getAcceptedNominationUseCase)
 
 export const router = Router()
-router.get("/nomination", getAcceptedNominationController.getAcceptedNom )
+router.get("/nomination", isAdmin, getAcceptedNominationController.getAcceptedNom )
 router.post("/nomination", createNominationController.createNom )

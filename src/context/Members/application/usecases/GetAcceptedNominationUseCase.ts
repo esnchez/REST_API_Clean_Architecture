@@ -9,7 +9,6 @@ export class GetAcceptedNominationUseCase {
         this.memberRepository = memberRepository
     }
 
-    //evaluate uuids and destructuring
     async run(): Promise<MemberNomination[] | null> {
 
         return await this.memberRepository.getAcceptedNomination() 

@@ -14,7 +14,16 @@ const MemberSchema = new Schema<Member>(
         email: {
             type: String,
             required: true,
-            unique: true
+            unique: true,
+            match: [
+                /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+                'Please add a valid E-mail'
+            ]
+        },
+        role: {
+            type: String,
+            enum: ['MEMBER', 'ADMIN'],
+            required: true,
         }
     },
     {

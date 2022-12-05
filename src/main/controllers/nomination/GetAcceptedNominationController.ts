@@ -15,7 +15,7 @@ export class GetAcceptedNominationController {
             const nomData = await this.getAcceptedNominationUseCase.run()
             res.status(httpStatus.OK).json({nominations: nomData})
         } catch (error) {
-            res.status(httpStatus.INTERNAL_SERVER_ERROR).send()  
+            res.status(httpStatus.INTERNAL_SERVER_ERROR).json({Error : error})  
         }
     }
 }

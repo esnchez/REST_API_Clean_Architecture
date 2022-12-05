@@ -16,7 +16,7 @@ export class CreateNominationController {
             await this.createNominationUseCase.run(req.body)
             res.status(httpStatus.CREATED).json("Created successfully")
         } catch (error) {
-            res.status(httpStatus.INTERNAL_SERVER_ERROR).send("error")
+            res.status(httpStatus.INTERNAL_SERVER_ERROR).json({Error : error})
         }
     }
 }

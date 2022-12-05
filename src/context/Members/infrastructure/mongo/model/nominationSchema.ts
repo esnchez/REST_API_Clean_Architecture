@@ -10,12 +10,20 @@ const NominationSchema = new Schema<MemberNomination>(
         },
         emailRef: {
             type: String,
-            required: true
+            required: true,
+            match: [
+                /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+                'Please add a valid E-mail'
+            ]
         },
         emailNom: {
             type: String,
             required: true,
-            unique: true
+            unique: true,
+            match: [
+                /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+                'Please add a valid E-mail'
+            ]
         },
         description: {
             type: String,
