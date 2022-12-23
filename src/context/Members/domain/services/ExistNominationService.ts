@@ -3,19 +3,18 @@ import { MemberNominationRepository } from "../repositories/MemberNominationRepo
 
 export class ExistNominationService {
 
-    private readonly memberRepository : MemberNominationRepository
+    private readonly memberNominationRepository : MemberNominationRepository
 
     constructor(memberRepository : MemberNominationRepository) {
-        this.memberRepository = memberRepository
+        this.memberNominationRepository = memberRepository
     }
 
-    async run(email: string) : Promise<boolean> {
+    async run(email: string) : Promise<void> {
 
-        const nomination = await this.memberRepository.getByemailNom(email)
+        const nomination = await this.memberNominationRepository.getByemailNom(email)
         if(nomination !== null) {
-           return true 
+           throw new Error("Nomination already stored")
         }
-        return false
     }
 
 }

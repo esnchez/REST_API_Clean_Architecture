@@ -1,8 +1,9 @@
 import { MemberNomination } from "../../domain/entities/MemberNomination";
 import { MemberNominationRepository } from "../../domain/repositories/MemberNominationRepository";
+import { NotificationSenderRepository } from "../../domain/repositories/NotificationSenderRepository";
 import { ExistNominationService } from "../../domain/services/ExistNominationService";
 import { ValidMemberService } from "../../domain/services/ValidMemberService";
-import { AcceptanceNominationService } from "../../domain/services/AcceptanceNominationService";
+import { NotificationSenderService } from "../../domain/services/NotificationSenderService";
 import { UseCase } from "./UseCase";
 
 export interface CreateNominationUseCaseRequestDTO {
@@ -15,35 +16,36 @@ export interface CreateNominationUseCaseRequestDTO {
 
 export class CreateNominationUseCase implements UseCase<CreateNominationUseCaseRequestDTO,any> {
 
-    private readonly memberRepository : MemberNominationRepository
+    private readonly memberNominationRepository : MemberNominationRepository
     private readonly existNominationService : ExistNominationService
     private readonly validMemberService : ValidMemberService
-    private readonly acceptanceNominationService : AcceptanceNominationService
+    private readonly notificationSenderService : NotificationSenderService
 
 
-    constructor(memberRepository : MemberNominationRepository) {
-        this.memberRepository = memberRepository
+    constructor(memberRepository : MemberNominationRepository, notificationRepository : NotificationSenderRepository ) {
+        this.memberNominationRepository = memberRepository
         this.existNominationService = new ExistNominationService(memberRepository)
         this.validMemberService = new ValidMemberService(memberRepository)
-        this.acceptanceNominationService = new AcceptanceNominationService()
+        this.notificationSenderService = new NotificationSenderService(notificationRepository)
     }
 
     async run(request : CreateNominationUseCaseRequestDTO): Promise<void> {
                     
         //**Nomination is submitted by a valid/stored member email? 
-
         // const isMemValid : boolean = await this.validMemberService.run(request.emailRef)
         // if (!isMemValid) throw new Error("Member is not valid")
 
-        //Nomination submitted is already stored.
-        const isNomSaved : boolean = await this.existNominationService.run(request.emailNom)
-        if (isNomSaved) throw new Error("Nomination already stored")
+        //Nomination submitted is already stored?.
+        await this.existNominationService.run(request.emailNom)
 
-        const nomination = new MemberNomination(request)
+        // const nomination = new MemberNomination(request)
+        const nomination = MemberNomination.create(request)
 
-        //Acceptance/email is handled depending on talent score.
-        const nomRefined : MemberNomination = await this.acceptanceNominationService.run(nomination)
+        //Non-acceptance email is sent depending on acceptance value.
+        await this.notificationSenderService.run(nomination)
+
+        //Publication of event member-nomination-creation
  
-        await this.memberRepository.save(nomRefined)
+        await this.memberNominationRepository.save(nomination)
     }
 }

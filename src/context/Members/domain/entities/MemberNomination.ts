@@ -11,6 +11,7 @@ export type MemberNominationRequest = {
 }
 
 export class MemberNomination {
+    
     public id: string;
     public emailRef: string;
     public emailNom: string;
@@ -29,14 +30,33 @@ export class MemberNomination {
         this.description = request.description;
         this.communityScore = request.communityScore;
         this.talentScore = request.talentScore;
-        this.acceptance = false
+        this.acceptance = this.acceptanceMethod(request.talentScore)
     }
+
+
 
     private checkValuesAreValid(value1: Number, value2: Number, validValues: Number[] ): void {
         if (!validValues.includes(value1) || !validValues.includes(value2)) {
             throw new Error("Submitted an invalid value");
         }
-      }
+    }
+
+    private acceptanceMethod(value : Number) : boolean {
+        if (value < 8) {
+            return false
+        }
+        return true
+    }
+
+    public static create(request : MemberNominationRequest): MemberNomination {
+
+        const nomination = new MemberNomination(request)
+
+        //Record a new membernominationcreation event
+
+        return nomination;
+
+    }
 
     
 

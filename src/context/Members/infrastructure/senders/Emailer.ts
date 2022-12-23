@@ -1,6 +1,7 @@
 import nodemailer from "nodemailer"
+import { NotificationSenderRepository } from "../../domain/repositories/NotificationSenderRepository"
 
-export class Emailer {
+export class Emailer implements NotificationSenderRepository {
 
     private readonly transporter : nodemailer.Transporter
  

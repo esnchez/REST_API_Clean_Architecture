@@ -10,4 +10,7 @@ export interface MemberNominationRepository {
     getMemberByEmail(email : string) : Promise<Member | null>
 
     getAcceptedNomination() : Promise<MemberNomination[] | null>
+
+    getAllNomination() : Promise<MemberNomination[] | null>
+
 }

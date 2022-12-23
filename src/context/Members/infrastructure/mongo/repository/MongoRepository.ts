@@ -19,8 +19,14 @@ export class MongoRepository implements MemberNominationRepository {
         const member = await MemberModel.findOne({email: email})
         return member
     }
+
     async getAcceptedNomination(): Promise<MemberNomination[] | null> {
         const acceptedNoms = await NominationModel.find({ acceptance : true})
         return acceptedNoms ?? "undefined"
+    }
+
+    async getAllNomination(): Promise<MemberNomination[] | null> {
+        const allNoms = await NominationModel.find()
+        return allNoms ?? "undefined"
     }
 }

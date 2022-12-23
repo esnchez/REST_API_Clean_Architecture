@@ -3,14 +3,15 @@ import { MemberNominationRepository } from "../../domain/repositories/MemberNomi
 
 export class GetAcceptedNominationUseCase {
 
-    private readonly memberRepository : MemberNominationRepository
+    private readonly memberNominationRepository : MemberNominationRepository
 
     constructor(memberRepository : MemberNominationRepository) {
-        this.memberRepository = memberRepository
+        this.memberNominationRepository = memberRepository
     }
 
     async run(): Promise<MemberNomination[] | null> {
-
-        return await this.memberRepository.getAcceptedNomination() 
+        
+        //TODO: get back to accepted nominations only
+        return await this.memberNominationRepository.getAllNomination() 
     }
 }
